@@ -36,6 +36,7 @@ type APIClient struct {
 	BaseURL           *url.URL
 	APIKey            string
 	OrganizationToken string
+	Payments          *PaymentResource
 }
 
 //WithAPIKey offers a convenient setter with some base validation to attach
@@ -131,6 +132,9 @@ func NewClient(ctx context.Context, baseClient httpClient, uri string) (mollie *
 		HTTPClient: baseClient,
 		BaseURL:    u,
 	}
+
+	mollie.Payments = &PaymentResource{api: mollie}
+
 	if tkn, ok := os.LookupEnv(APITokenEnv); ok {
 		mollie.APIKey = tkn
 	}

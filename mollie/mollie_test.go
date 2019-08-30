@@ -59,6 +59,7 @@ func TestNewClient(t *testing.T) {
 		APIKey:            "",
 		OrganizationToken: "",
 	}
+	want.Payments = &PaymentResource{api: want}
 
 	tests := []struct {
 		name      string
@@ -121,6 +122,7 @@ func TestNewClient_WithEnvVars(t *testing.T) {
 		APIKey:            "token_X12b31ggg23",
 		OrganizationToken: "ey1923n23123n1k3b123jv12g312h31v32g13",
 	}
+	want.Payments = &PaymentResource{api: want}
 	got, _ := NewClient(nil, nil, "http://localhost:3000")
 
 	if !reflect.DeepEqual(got, want) {

@@ -2,7 +2,8 @@ checks:
   go: true
 filter:
   excluded_paths:
-    - "*/*_test.go/*"
+    - "mollie/*_test.go"
+    - "mollie/testdata/"
 build:
   environment:
     variables:

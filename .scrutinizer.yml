@@ -1,14 +1,14 @@
 checks:
   go: true
 build:
+  filter:
+    excluded_paths:
+      - "*/*_test.go/*"
   environment:
     variables:
       GO111MODULES: 'on'
   nodes:
     analysis:
-      filter:
-        excluded_paths:
-          - "*/*_test.go/*"
       project_setup:
         override:
           - 'true'

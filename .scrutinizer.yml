@@ -9,13 +9,13 @@ build:
       project_setup:
         override:
           - 'true'
-        filter:
-          excluded_paths:
-            - "*/*_test.go/*"
       environment:
         go:
           version: go1.12.9
       tests:
+        filter:
+          excluded_paths:
+            - "*/*_test.go/*"
         override:
           - go-scrutinizer-run
           - govet-run

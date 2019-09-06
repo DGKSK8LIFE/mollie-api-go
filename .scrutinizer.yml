@@ -6,6 +6,9 @@ build:
       GO111MODULES: 'on'
   nodes:
     analysis:
+      filter:
+        excluded_paths:
+          - "*/*_test.go/*"
       project_setup:
         override:
           - 'true'
@@ -13,9 +16,6 @@ build:
         go:
           version: go1.12.9
       tests:
-        filter:
-          excluded_paths:
-            - "*/*_test.go/*"
         override:
           - go-scrutinizer-run
           - govet-run

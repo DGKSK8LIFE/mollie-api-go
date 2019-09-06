@@ -14,6 +14,9 @@ type HalURL struct {
 	*url.URL
 }
 
+//UnmarshalJSON overrides the default unmarshal action
+//for the HalURL struct, as we need links to be pointers
+//to the url.URL struct.
 func (hl *HalURL) UnmarshalJSON(b []byte) error {
 	s := string(b)
 	s = strings.Trim(s, "\"")
@@ -26,7 +29,7 @@ func (hl *HalURL) UnmarshalJSON(b []byte) error {
 }
 
 type hal struct {
-	Self     link `json:"self,omitemtpy"`
+	Self     link `json:"self,omitempty"`
 	Checkout link `json:"checkout,omitempty"`
 	Docs     link `json:"documentation,omitempty"`
 	pagination

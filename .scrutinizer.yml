@@ -1,9 +1,9 @@
 checks:
   go: true
+filter:
+  excluded_paths:
+    - "*/*_test.go/*"
 build:
-  filter:
-    excluded_paths:
-      - "*/*_test.go/*"
   environment:
     variables:
       GO111MODULES: 'on'

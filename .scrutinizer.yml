@@ -1,0 +1,26 @@
+checks:
+  go: true
+build:
+  environment:
+    variables:
+      GO111MODULES: 'on'
+  nodes:
+    analysis:
+      project_setup:
+        override:
+          - 'true'
+        filter:
+          excluded_paths:
+            - "*/*_test.go/*"
+      environment:
+        go:
+          version: go1.12.9
+      tests:
+        override:
+          - go-scrutinizer-run
+          - govet-run
+          - golint-run
+          - command: 'go test ./... -coverprofile=cover.out'
+            coverage:
+              file: 'cover.out'
+              format: 'go-cc'
